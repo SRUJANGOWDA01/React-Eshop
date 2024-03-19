@@ -1,4 +1,9 @@
 /* common css class */
+.container-main {
+    position: relative;
+    top: 5vw;
+    z-index: -3;
+}
 .btn {
     font-size: 1.2rem;
     cursor: pointer;
@@ -77,9 +82,11 @@ header .navbar {
     width: 0;
     opacity: 0;
     display: flex;
-    align-items: start;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
     transition: all 0.3s;
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar.active {
@@ -94,7 +101,76 @@ header .navbar {
     width: 80%;
 }
 
+.sidebar-title {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+}
+
+/* sidebar menu list */
+.sidebar-body .menulist {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    list-style: none;
+}
+
+.menulist .menu-item {
+    background-color: #222;
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+}
+
+.menu-item .menu-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 14px;
+}
+
+.menu-item:hover {
+    background-color: #fff;
+    border: 2px solid #222;
+    text-decoration: none;
+    padding: 12px 14px ;
+}
+
+.menu-item:hover .menu-link {
+    color: #222;
+}
+
+/* tabmenu */
+.tabmenu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* media query */
 @media screen and (max-width: 768px) {
+    .container-main {
+        position: relative;
+        top: 15vw;
+        z-index: -3;
+    }
+    .navbar a.logo {
+        font-size: 1.5rem;
+    }
+    .sidebar.active {
+        width: 60vw;
+        opacity: 1;
+        transition: all 0.3s;
+    }
+}
+
+/* tab view */
+@media (min-width: 769px) and (max-width: 996px) {
+    .container-main {
+        position: relative;
+        top: 10vw;
+        z-index: -3;
+    }
     .navbar a.logo {
         font-size: 1.5rem;
     }

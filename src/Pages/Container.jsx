@@ -9,12 +9,14 @@ import Pnf from '../Component/default/Pnf'
 import Store from '../Screen/Product/Store'
 import ProductCart from '../Screen/Cart/ProductCart'
 import ProductChekout from '../Screen/Checkout/ProductChekout'
+import SingleProduct from '../Screen/Product/SingleProduct'
 
 function Container() {
   return (
     <Routes>
            <Route path={`/`} element={<Home/>}>
                   <Route path={`/`} element={<Store/>}/>
+                  <Route path={`/product/:id`} element={<SingleProduct/>}/>
                   <Route path={`/cart`} element={<ProductCart/>}/>
                   <Route path={`/checkout`} element={<ProductChekout/>}/>
            </Route>

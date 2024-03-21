@@ -50,7 +50,6 @@ function Home() {
       </div>
       <Outlet/>
     </div>
-    <Outlet/>
     </React.Fragment>
   )
 }

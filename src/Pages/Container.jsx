@@ -10,10 +10,12 @@ import Store from '../Screen/Product/Store'
 import ProductCart from '../Screen/Cart/ProductCart'
 import ProductChekout from '../Screen/Checkout/ProductChekout'
 import SingleProduct from '../Screen/Product/SingleProduct'
+import PrivateRoute from '../PrivateRouter/PrivateRouter'
 
 function Container() {
   return (
     <Routes>
+      <Route element={<PrivateRoute/>}>
            <Route path={`/`} element={<Home/>}>
                   <Route path={`/`} element={<Store/>}/>
                   <Route path={`/product/:id`} element={<SingleProduct/>}/>
@@ -22,6 +24,7 @@ function Container() {
            </Route>
            <Route path={`/about`} element={<About/>}/>
            <Route path={`/contact`} element={<Contact/>}/>
+      </Route>
            <Route path={`/login`} element={<Login/>}/>
            <Route path={`/register`} element={<Register/>}/>
            <Route path={`/*`} element={<Pnf/>}/>

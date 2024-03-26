@@ -7,7 +7,7 @@ const url = 'https://fakestoreapi.com'
 function ProductCart() {
   const [cart,setCart] = useState([])
 
-  // read the carts data
+/*   // read the carts data
   const readCart = async () => {
     await axios.get(`${url}/carts`)
        .then(res => {
@@ -18,13 +18,23 @@ function ProductCart() {
 
   useEffect(() => {
     readCart()
-  },[])
+  },[]) */
 
   return (
     <div className='container'>
       <div className="row">
         <div className="col">
           <h3>Cart Info</h3>
+          <table className="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+          </table>
         </div>
       </div>
     </div>

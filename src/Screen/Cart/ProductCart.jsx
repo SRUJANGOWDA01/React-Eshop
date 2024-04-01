@@ -1,42 +1,61 @@
-import React, { useEffect, useState} from 'react'
-import axios from 'axios'
+import React from 'react'
 import { toast } from 'react-toastify'
+import useCart from '../../CustomHook/Cart'
 
-const url = 'https://fakestoreapi.com'
 
 function ProductCart() {
-  const [cart,setCart] = useState([])
-
-/*   // read the carts data
-  const readCart = async () => {
-    await axios.get(`${url}/carts`)
-       .then(res => {
-        //console.log(`carts =`,res.data)
-        setCart(res.data[0])
-       }).catch(err => toast.error(err.response.data.msg))
-  }
-
-  useEffect(() => {
-    readCart()
-  },[]) */
+ 
+  const { cartData, removeCart,decr, incr, clearCart } = useCart()
 
   return (
     <div className='container'>
-      <div className="row">
-        <div className="col">
-          <h3>Cart Info</h3>
-          <table className="table">
-            <thead>
-              <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-          </table>
+        <div className="row">
+            <div className="col">
+                <h3>Cart Info</h3>
+                <table className="table">
+                    <thead>
+                      <tr>
+                        <th colSpan={6}>
+                           <button onClick={() => clearCart()} className="btn decr">Clear Cart</button>
+                        </th>
+                        </tr>
+                        <tr>
+                          <th>Title</th>
+                          <th>Image</th>
+                          <th>Item Price</th>
+                          <th>Quantity</th>
+                          <th>Price</th>
+                          <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {
+                          cartData.cart && cartData.cart.map((item,index) => {
+                              return (
+                                    <tr key={index}>
+                                        <td> { item.title }  </td>
+                                        <td> <img src={item?.image} alt="no image" height={50} width={50} /> </td>
+                                        <td> &#8377; { item.price } </td>
+                                        <td> 
+                                          <button onClick={() => decr(item.id)} className="btn decr">-</button>  
+                                            <strong> { item.quantity } </strong>
+                                          <button onClick={() => incr(item.id)} className="btn incr">+</button>  
+                                        </td>
+                                        <td> &#8377; { item.quantity * item.price } </td>
+                                        <td>
+                                            <button onClick={() => removeCart(item.id)} className="btn decr">
+                                              <i className="bi bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                              )
+                           })
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div className="col"></div>
         </div>
-      </div>
     </div>
   )
 }

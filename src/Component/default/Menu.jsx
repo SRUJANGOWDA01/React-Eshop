@@ -3,10 +3,12 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../CustomHook/Auth'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import useCart from '../../CustomHook/Cart'
 
 function Menu() {
   // context values
   const { contextData, setToken} = useAuth()
+  const { cartData } = useCart()
   // router instance
   const navigate = useNavigate()
 
@@ -41,7 +43,7 @@ function Menu() {
                 <div>
 
                   <NavLink to={`/cart`} className="cart">
-                      <i className="bi bi-cart-fill"></i>
+                      <i className="bi bi-cart-fill"></i><strong className="circle"> {cartData?.cart.length}</strong>
                   </NavLink>
 
                   {

@@ -48,8 +48,8 @@ function Home() {
           </ul>
         </div>
       </div>
-      <Outlet/>
     </div>
+      <Outlet/>
     </React.Fragment>
   )
 }
